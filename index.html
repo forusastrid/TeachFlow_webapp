@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TeachFlow</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="1.css" />
+</head>
+<body>
+  <nav class="sidebar">
+    <h2>TeachFlow</h2>
+    <a href="#" onclick="showTab('teacherCall', this)">선생님 호출</a>
+    <a href="#" onclick="showTab('timetable', this)">전자 시간표</a>
+    <a href="#" onclick="showTab('equipmentReservation', this)">기기/장비 예약</a>
+    <a href="#" onclick="showTab('roomReservation', this)">방과후 교실 예약</a>
+    <a href="#" onclick="showTab('mealInfo', this)">급식 알리미</a>
+    <a href="#" onclick="showTab('aiChatbot', this)">AI 챗봇 문의</a>
+    <a href="#" onclick="showTab('chart', this)">차트</a>
+    <footer class="sidebar-footer">
+      <small>© 2025 B_NI77</small>
+    </footer>
+  </nav>
+
+  <main class="main">
+    <header class="header">
+      <img src="1.png" alt="티치플로배너" class="header-image" />
+    </header>
+    
+
+    <section id="teacherCall" class="widgets active">
+      <article class="widget">
+        <h3>선생님 호출 시스템</h3>
+        <p>학생이 교사를 선택하고 호출 요청을 보낼 수 있습니다.</p>
+      </article>
+    </section>
+
+    <section id="timetable" class="widgets">
+      <article class="widget">
+        <h3>전자 시간표</h3>
+        <div id="calendar"></div>
+      </article>
+    </section>
+
+    <section id="equipmentReservation" class="widgets">
+      <article class="widget">
+        <h3>기기/장비 예약 시스템</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>장비명</th>
+              <th>상태</th>
+              <th>예약</th>
+            </tr>
+          </thead>
+          <tbody id="equipmentList"></tbody>
+        </table>
+      </article>
+    </section>
+
+    <section id="roomReservation" class="widgets">
+      <article class="widget">
+        <h3>방과후 교실 예약</h3>
+        <label for="roomSelect">시설 선택:</label>
+        <select id="roomSelect">
+          <option value="진로실">2층 진로실</option>
+          <option value="AI나래실">2층 AI나래실</option>
+          <option value="SW나래실">3층 SW나래실</option>
+          <option value="미술실">3층 미술실</option>
+          <option value="과학실1">3층 과학실1</option>
+          <option value="과학실2">3층 과학실2</option>
+          <option value="과학실3">4층 과학실3</option>
+          <option value="과학실4">4층 과학실4</option>
+          <option value="음악실">4층 음악실</option>
+        </select>
+
+        <label for="timeSelect">시간 선택:</label>
+        <input type="time" id="timeSelect" />
+
+        <button onclick="reserveRoom()">예약하기</button>
+        <p id="roomReservationMsg" style="margin-top:1rem; color: green;"></p>
+      </article>
+    </section>
+
+    <section id="mealInfo" class="widgets">
+      <article class="widget">
+        <h3>급식 알리미</h3>
+        <p id="mealMenu">오늘의 급식 메뉴를 불러오는 중...</p>
+      </article>
+    </section>
+
+    <section id="aiChatbot" class="widgets">
+      <article class="widget chat-widget">
+        <h3>AI 챗봇 문의 응답 시스템</h3>
+        <div id="chatWindow" class="chat-window"></div>
+        <div class="chat-input-area">
+          <input type="text" id="chatInput" placeholder="질문을 입력하세요..." />
+          <button onclick="askChatbot()">전송</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="chart" class="widgets">
+      <article class="widget">
+        <h3>월별 출석률 (막대그래프)</h3>
+        <canvas id="attendanceChart"></canvas>
+      </article>
+      <article class="widget">
+        <h3>월별 출석률 (선형그래프)</h3>
+        <canvas id="attendanceLineChart"></canvas>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="1.js"></script>
+</body>
+</html>
